@@ -1,0 +1,5 @@
+MODEL = "deepseek-chat"
+BASE_URL = "https://api.deepseek.com"
+API_KEY = "YOUR_API_KEY"
+MILVUS_HOST = "YOUR_MILVUS_HOST"
+MILVUS_PORT = "19530"

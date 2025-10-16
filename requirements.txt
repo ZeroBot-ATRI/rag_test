@@ -1,0 +1,6 @@
+pandas
+tqdm
+sentence-transformers
+pymilvus
+numpy
+openai
