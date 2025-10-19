@@ -41,7 +41,17 @@ class KnowledgeBaseBuilder:
         
         # 加载embedding模型
         print("正在加载Embedding模型...")
-        self.model = SentenceTransformer("Qwen/Qwen3-Embedding-0.6B")
+        # 设置离线模式，优先使用本地缓存
+        import os
+        os.environ['HF_HUB_OFFLINE'] = '1'  # 启用离线模式
+        os.environ['TRANSFORMERS_OFFLINE'] = '1'
+        try:
+            self.model = SentenceTransformer("Qwen/Qwen3-Embedding-0.6B", local_files_only=True)
+        except Exception as e:
+            print(f"离线加载失败，尝试在线加载: {e}")
+            os.environ['HF_HUB_OFFLINE'] = '0'
+            os.environ['TRANSFORMERS_OFFLINE'] = '0'
+            self.model = SentenceTransformer("Qwen/Qwen3-Embedding-0.6B")
         print("模型加载完成！")
         
         # BM25模型（后续构建）
