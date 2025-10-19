@@ -4,3 +4,5 @@ sentence-transformers
 pymilvus
 numpy
 openai
+rank-bm25
+FlagEmbedding
